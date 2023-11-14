@@ -1,0 +1,42 @@
+<div class="container">
+    <h1 class="text-center">Computer Vision</h1><br />
+    <form>
+        <div class="form-group">
+            <label for="imageUrl">Insert URL or type prompt</label>
+            <input type="text" class="form-control" #imagePrompt placeholder="Enter image URL or prompt">
+        </div><br />
+        <div class="d-inline-flex gap-2 mb-5">
+            <button type="button" [disabled]="isLoading || !isConfigured" class="btn btn-primary" id="analyzeButton" (click)="analyzeImage(imagePrompt.value)">
+                <span *ngIf="!isLoading">Analyze Image</span>
+                <div *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status">
+                </div>
+            </button>
+            <button type="button" [disabled]="isLoading || !isConfigured" class="btn btn-secondary" id="generateButton" (click)="generateImage(imagePrompt.value)">
+                <span *ngIf="!isLoading">Generate Image</span>
+                <div *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status">
+                </div>
+            </button>
+        </div>
+    </form>
+    <div *ngIf="!isConfigured">
+        <div class="alert alert-danger" role="alert">
+            The application is not properly configured.
+        </div>
+    </div>
+</div>
+<hr />
+<div class="container">
+
+    <div *ngIf="mode.Active === 0">
+        <div class="alert alert-dark" role="alert">
+            Please enter a URL or Prompt, results will be displayed here
+        </div>
+    </div>
+    <div *ngIf="mode.Active === 1">
+        <app-url-image [analysis]="analysis"></app-url-image>
+    </div>
+    <div *ngIf="mode.Active === 2">
+        <app-generate-image [analysis]="analysis"></app-generate-image>
+    </div>
+
+</div>

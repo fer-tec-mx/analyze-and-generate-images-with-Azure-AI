@@ -1,0 +1,6 @@
+<div class="container">
+    <h4>Image URL:</h4>
+    <img [src]="analysis.ImageUrl" class="img-fluid rounded" alt="Generated image">
+    <h4>Analysis Results:</h4>
+    <pre>{{ analysis.Response | json }}</pre>
+</div>
