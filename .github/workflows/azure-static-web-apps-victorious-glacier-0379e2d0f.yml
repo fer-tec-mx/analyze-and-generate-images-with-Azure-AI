@@ -36,7 +36,7 @@ jobs:
           api_location: "api" # Api source code path - optional
           output_location: "dist/appwithazureservices" # Built app content directory - optional
         env:  # Put a node version on the following line
-          NODE_VERSION: 18.13.0
+          NODE_VERSION: 18.14.0
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
