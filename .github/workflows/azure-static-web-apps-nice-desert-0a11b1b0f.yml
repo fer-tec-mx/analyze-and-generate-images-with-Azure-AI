@@ -20,6 +20,17 @@ jobs:
           submodules: true
           lfs: false
 
+      - name: Replace environment variables
+        run: |
+          sed -i "s#REPLACE_WITH_GITHUB_SECRET_AZURE_IMGANALYSIS_ENDPOINT#${{ secrets.AZURE_IMGANALYSIS_ENDPOINT }}#g" src/environments/environment.ts
+          sed -i "s#REPLACE_WITH_GITHUB_SECRET_AZURE_IMGANALYSIS_KEY#${{ secrets.AZURE_IMGANALYSIS_KEY }}#g" src/environments/environment.ts
+          sed -i "s#REPLACE_WITH_GITHUB_SECRET_AZURE_OPENAI_ENDPOINT#${{ secrets.AZURE_OPENAI_ENDPOINT }}#g" src/environments/environment.ts
+          sed -i "s#REPLACE_WITH_GITHUB_SECRET_AZURE_OPENAI_KEY#${{ secrets.AZURE_OPENAI_KEY }}#g" src/environments/environment.ts
+          sed -i "s#REPLACE_WITH_GITHUB_SECRET_AZURE_IMGANALYSIS_ENDPOINT#${{ secrets.AZURE_IMGANALYSIS_ENDPOINT }}#g" src/environments/environment.development.ts
+          sed -i "s#REPLACE_WITH_GITHUB_SECRET_AZURE_IMGANALYSIS_KEY#${{ secrets.AZURE_IMGANALYSIS_KEY }}#g" src/environments/environment.development.ts
+          sed -i "s#REPLACE_WITH_GITHUB_SECRET_AZURE_OPENAI_ENDPOINT#${{ secrets.AZURE_OPENAI_ENDPOINT }}#g" src/environments/environment.development.ts
+          sed -i "s#REPLACE_WITH_GITHUB_SECRET_AZURE_OPENAI_KEY#${{ secrets.AZURE_OPENAI_KEY }}#g" src/environments/environment.development.ts
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1

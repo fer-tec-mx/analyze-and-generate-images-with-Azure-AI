@@ -1,0 +1,7 @@
+export const environment = {
+    production: false,
+    imageAnalysisEndpoint: 'REPLACE_WITH_GITHUB_SECRET_AZURE_IMGANALYSIS_ENDPOINT',
+    imageAnalysisKey: 'REPLACE_WITH_GITHUB_SECRET_AZURE_IMGANALYSIS_KEY',
+    openAIEndpoint: 'REPLACE_WITH_GITHUB_SECRET_AZURE_OPENAI_ENDPOINT',
+    openAIKey: 'REPLACE_WITH_GITHUB_SECRET_AZURE_OPENAI_KEY',
+};

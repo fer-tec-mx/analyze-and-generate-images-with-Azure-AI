@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { environment } from "./../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AzureOpenAIService {
-  private readonly subscriptionKey = '';
-  private readonly endpoint = '';
+  private readonly subscriptionKey = environment.openAIKey;
+  private readonly endpoint = environment.openAIEndpoint;
   private readonly pathGenerateImages = '/openai/images/generations:submit';
   private readonly pathQueryImages = '/openai/operations/images/';
   private readonly apiVersion = '?api-version=2023-06-01-preview';
@@ -54,6 +54,7 @@ export class AzureOpenAIService {
   }
 
   isConfigured(): boolean {
+    console.log('Endpoint OpenAI: ', this.endpoint);
     return this.subscriptionKey.length > 0 && this.endpoint.length > 0;
   }
 }
